@@ -1,0 +1,85 @@
+.container {
+  background-color: var(--color-white);
+  padding: 3rem 1.5rem;
+  border-radius: 15px 15px 6rem 15px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+/* CONTAINER FORMULÁRIO  */
+
+.form {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid var(--color-light-grey);
+  padding-bottom: 4rem;
+}
+
+.form label {
+  color: var(--color-smokey-grey);
+  font-size: .9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.form input {
+  width: 100%;
+  padding: .9rem 0 .9rem .7rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 8px;
+  border: 0.13rem solid var(--color-light-grey);
+  color: var(--color-black-off);
+}
+
+.form input:focus {
+  outline: none;
+}
+
+.form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 7.2rem;
+  left: 42%;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.form button img {
+  width: 30px;
+}
+
+/* CONTAINER DOS DADOS  */
+
+.container-data {
+  margin-top: 4rem;
+}
+
+.container-data p, .container-data span {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.container-data p {
+  color: var(--color-black-off);
+}
+
+.container-data span {
+  color: var(--color-primary);
+}
+
+@media screen and (min-width: 1000px) {
+  .form button:hover img {
+    animation: animationArrow 980ms ease-in-out infinite;
+  }
+}
