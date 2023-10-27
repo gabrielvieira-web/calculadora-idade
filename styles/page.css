@@ -37,13 +37,23 @@
   outline: none;
 }
 
+.form .messageError {
+  color: var(--color-secundary);
+  margin-top: .5rem;
+  font-size: .7rem;
+  font-weight: 400;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 .form button {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 7.2rem;
-  left: 42%;
+  top: 82%;
+  left: 40%;
   background-color: var(--color-primary);
   border: none;
   border-radius: 50%;
@@ -66,8 +76,9 @@
 }
 
 .container-data p, .container-data span {
-  font-size: 3rem;
+  font-size: 3.3rem;
   font-weight: 800;
+  font-style: italic;
 }
 
 .container-data p {
@@ -79,7 +90,54 @@
 }
 
 @media screen and (min-width: 1000px) {
+  
+  .container {
+    width: 800px;
+    padding: 3rem 2.5rem;
+  }
+
+  .form {
+    gap: 2rem;
+  }
+
+  .form label {
+    width: 25%;
+  }
+
+  .form input {
+    padding: 1rem 0 1rem 1rem;
+    font-size: 1.8rem;
+  }
+
+  .form button {
+    padding: 20px;
+    top: 7.5rem;
+    left: 90%;
+  }
+
   .form button:hover img {
     animation: animationArrow 980ms ease-in-out infinite;
   }
+
+  .form button img {
+    width: 35px;
+  }
+
+  .container-data {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .container-data p {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-height: 40px;
+  }
+
+  .container-data p, .container-data span {
+    font-size: 5rem;
+  }
+
 }
