@@ -35,3 +35,12 @@ body {
   background-color: var(--color-white-off);
   font-family: var(--font-main);
 }
+
+@media screen and (min-width: 1200px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0 4rem 0;
+  }
+}
