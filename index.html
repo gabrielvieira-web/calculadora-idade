@@ -14,17 +14,20 @@
     <form class="form">
       <label for="day">
         Dia
-        <input type="number" id="day" placeholder="DD"/>
+        <input type="number" id="day" placeholder="DD" required/>
+        <p class="messageError" id="messageError"></p>
       </label>
       <label for="month">
         Mês
-        <input type="number" id="month" placeholder="MM" />
+        <input type="number" id="month" placeholder="MM" required/>
+        <p class="messageError" id="messageError"></p>
       </label>
       <label for="year">
         Ano
-        <input type="number" id="year" placeholder="YYYY" />
+        <input type="number" id="year" placeholder="YYYY" required/>
+        <p class="messageError" id="messageError"></p>
       </label>
-      <button type="submit">
+      <button type="submit" id="button">
         <img 
           src="assets/images/icon-arrow.svg" 
           alt="Seta para baixo que ao clicar mostra a idade da pessoa" 
@@ -34,18 +37,19 @@
     </form>
     <div class="container-data">
       <p class="text">
-        <span class="data">--</span>
+        <span class="data">- -</span>
         anos
       </p>
       <p class="text">
-        <span class="data">--</span>
+        <span class="data">- -</span>
         meses
       </p>
       <p class="text">
-        <span class="data">--</span>
+        <span class="data">- -</span>
         dias
       </p>
     </div>
   </section>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
