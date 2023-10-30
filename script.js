@@ -13,10 +13,11 @@ function validateDataForm() {
   validateInputDay();
   validateInputMonth();
   validateInputYear();
+  hasDayInMonth();
 }
 
 function validateInputDay() {
-  if(inputDay.value === '' || inputDay.value.length > 2 || inputDay.value <= 0 || inputDay.value > 31) {
+  if(inputDay.value === '' || inputDay.value.length > 2 || inputDay.value <= 0) {
     errorMessage(0);
   } else{
     messageError[0].textContent = "";
@@ -37,6 +38,16 @@ function validateInputYear() {
     errorMessage(2);
   } else{
     messageError[2].textContent = "";
+  }
+}
+
+function hasDayInMonth() {
+  // Verifica se o dia passado no input, existe no mês. ex: 31/04/2023 (DATA INVÁLIDA) pois não existe dia 31 no mês de Abril
+  const dateForm = new Date(`${inputYear.value}, ${inputMonth.value}, ${inputDay.value}`);
+  // Os números dos meses retornados pela função getMonth() vão de 0 á 11. sendo 0 JANEIRO e 11 
+  const numberNextMonth = dateForm.getMonth();
+  if(numberNextMonth == inputMonth.value) {
+    errorMessage(0);
   }
 }
 
