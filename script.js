@@ -2,6 +2,8 @@ const inputDay = document.querySelector('#day');
 const inputMonth = document.querySelector('#month');
 const inputYear = document.querySelector('#year');
 const button = document.querySelector('#button');
+const paragraph = document.querySelectorAll('.text');
+const containerError = document.querySelector('#container-error');
 let messageError = document.querySelectorAll('#messageError');
 let spanYears = document.querySelector('#years');
 let spanMonths = document.querySelector('#months');
@@ -21,7 +23,9 @@ function validateDataForm() {
   const monthValid = validateInputMonth();
   const yearValid = validateInputYear();
   const dayInMonthValid = hasDayInMonth();
-  if(dayValid && monthValid && yearValid && dayInMonthValid) {
+  const dateIsNotFutureValid = dateIsNotFuture();
+
+  if(dayValid && monthValid && yearValid && dayInMonthValid && dateIsNotFutureValid) {
     return true;
   }
   return false;
@@ -99,6 +103,39 @@ function hasDayInMonth() {
   if(inputDay.value > lastDayMonth.getDate()) {
     errorMessage(0);
     return false;
+  }
+  return true;
+}
+
+function dateIsNotFuture() {
+  const currentDate = new Date();
+  const dayCurrent = currentDate.getDate();
+  const monthCurrent = currentDate.getMonth() + 1;
+  const yearCurrent = currentDate.getFullYear();
+
+  if(inputDay.value > dayCurrent || inputMonth.value > monthCurrent && inputYear.value == yearCurrent) {
+    const paragraphError = document.createElement('p');
+    paragraphError.innerText = 'Desculpe, mais a data que você passou é invalida. Ela está no fulturo';
+    paragraphError.style.cssText = `
+      color:  hsl(0, 100%, 67%);
+      font-size: 1.5rem;
+      font-style: italic;
+      font-weight: 800;
+    `
+
+    if(containerError.firstChild == null) {
+      paragraph.forEach(item => item.style.display = 'none');
+      containerError.appendChild(paragraphError);
+    }
+    return false;
+  }
+  if(containerError.firstChild) {
+    containerError.firstChild.remove();
+    paragraph.forEach(item => {
+      if(item.style.display == 'none') {
+        item.style.display = 'block';
+      }
+    })
   }
   return true;
 }
