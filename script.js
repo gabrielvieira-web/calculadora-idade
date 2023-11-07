@@ -113,22 +113,14 @@ function dateIsNotFuture() {
   const monthCurrent = currentDate.getMonth() + 1;
   const yearCurrent = currentDate.getFullYear();
 
-  if(inputDay.value > dayCurrent || inputMonth.value > monthCurrent && inputYear.value == yearCurrent) {
-    const paragraphError = document.createElement('p');
-    paragraphError.innerText = 'Desculpe, mais a data que você passou é invalida. Ela está no fulturo';
-    paragraphError.style.cssText = `
-      color:  hsl(0, 100%, 67%);
-      font-size: 1.5rem;
-      font-style: italic;
-      font-weight: 800;
-    `
-
-    if(containerError.firstChild == null) {
-      paragraph.forEach(item => item.style.display = 'none');
-      containerError.appendChild(paragraphError);
-    }
+  if(inputDay.value > dayCurrent && inputMonth.value >= monthCurrent && Number(inputYear.value) === yearCurrent) {
+    errorMessageDateFutere();
+    return false;
+  } else if(inputDay.value <= dayCurrent && inputMonth.value > monthCurrent && Number(inputYear.value) === yearCurrent) {
+    errorMessageDateFutere();
     return false;
   }
+
   if(containerError.firstChild) {
     containerError.firstChild.remove();
     paragraph.forEach(item => {
@@ -145,4 +137,20 @@ function errorMessage(position) {
   spanYears.textContent = '- -';
   spanMonths.textContent = '- -';
   spanDays.textContent = '- -';
+}
+
+function errorMessageDateFutere() {
+  const paragraphError = document.createElement('p');
+  paragraphError.innerText = 'Desculpe, mais a data que você passou é invalida. Ela está no fulturo';
+  paragraphError.style.cssText = `
+    color:  hsl(0, 100%, 67%);
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 800;
+  `
+
+  if(containerError.firstChild == null) {
+    paragraph.forEach(item => item.style.display = 'none');
+    containerError.appendChild(paragraphError);
+  }
 }
